@@ -11,7 +11,7 @@
 </head>
 <body>
   <div id="calculator">
-    <div id="result">250</div>
+    <div id="result"></div>
     <div id="preview"></div>
     <div class="container-fluid">
       <div class="row">
@@ -19,46 +19,46 @@
           <div class="row">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-xs-4 key digit" data-digit="7">7</div>
-                <div class="col-xs-4 key digit" data-digit="8">8</div>
-                <div class="col-xs-4 key digit" data-digit="9">9</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="7">7</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="8">8</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="9">9</div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-xs-4 key digit" data-digit="4">4</div>
-                <div class="col-xs-4 key digit" data-digit="5">5</div>
-                <div class="col-xs-4 key digit" data-digit="6">6</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="4">4</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="5">5</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="6">6</div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-xs-4 key digit" data-digit="1">1</div>
-                <div class="col-xs-4 key digit" data-digit="2">2</div>
-                <div class="col-xs-4 key digit" data-digit="3">3</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="1">1</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="2">2</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="3">3</div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-xs-4 key" data-digit=".">.</div>
-                <div class="col-xs-4 key digit" data-digit="0">0</div>
-                <div class="col-xs-4 key" data-digit="=">=</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit=".">.</div>
+                <div class="col-xs-4 key input" data-key-type="digit" data-digit="0">0</div>
+                <div class="col-xs-4 key input" data-key-type="equals">=</div>
               </div>
             </div>
           </div>
         </div>
         <div id="operators" class="col-xs-3">
-          <div id="delete" class="operator">DEL</div>
-          <div class="operator">/</div>
-          <div class="operator">X</div>
-          <div class="operator">-</div>
-          <div class="operator">+</div>
+          <div class="operator input" data-key-type="delete">DEL</div>
+          <div class="operator input" data-key-type="operator" data-operator="/">/</div>
+          <div class="operator input" data-key-type="operator" data-operator="*">X</div>
+          <div class="operator input" data-key-type="operator" data-operator="-">-</div>
+          <div class="operator input" data-key-type="operator" data-operator="+">+</div>
         </div>
       </div>
     </div>
