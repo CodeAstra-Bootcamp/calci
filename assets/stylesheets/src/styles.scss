@@ -41,6 +41,14 @@ body {
       font-weight: 100;
       height: $key_height;
       line-height: $key_height;
+
+      &:hover {
+        background-color: darken(#434343, 5%);
+      }
+
+      &:active {
+        background-color: darken(#434343, 10%);
+      }
     }
   }
 

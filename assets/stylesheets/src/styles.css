@@ -33,6 +33,10 @@ body {
       font-weight: 100;
       height: 16vmin;
       line-height: 16vmin; }
+      #calculator #keys .key:hover {
+        background-color: #363636; }
+      #calculator #keys .key:active {
+        background-color: #2a2a2a; }
   #calculator #operators {
     text-align: center; }
     #calculator #operators .operator {
