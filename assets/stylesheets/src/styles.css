@@ -1,0 +1,47 @@
+body {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif; }
+
+#calculator {
+  width: 100vmin;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto; }
+  #calculator #result {
+    text-align: right;
+    padding-right: 2vmin;
+    background-color: #F3F3F3;
+    font-size: 14vmin;
+    font-weight: 100;
+    height: 20.8vmin;
+    line-height: 20.8vmin; }
+  #calculator #preview {
+    text-align: right;
+    padding-right: 2vmin;
+    background-color: #F2F2F2;
+    font-size: 6vmin;
+    font-weight: 100;
+    height: 11.2vmin;
+    line-height: 11.2vmin; }
+  #calculator #keys {
+    text-align: center; }
+    #calculator #keys .key {
+      background-color: #434343;
+      color: #F3F3F3;
+      font-size: 8vmin;
+      font-weight: 100;
+      height: 16vmin;
+      line-height: 16vmin; }
+  #calculator #operators {
+    text-align: center; }
+    #calculator #operators .operator {
+      background-color: #636363;
+      color: #F3F3F3;
+      font-size: 6vmin;
+      font-weight: 300;
+      height: 12.8vmin;
+      line-height: 12.8vmin;
+      margin: 0 -15px; }
+
+/*# sourceMappingURL=styles.css.map */
