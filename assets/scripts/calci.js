@@ -14,10 +14,19 @@ var Calci = {
     $('#calculator #delete').dblclick(function() {
       Calci.clearResult();
     });
-    ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/', '*', '+', '-', '.'].forEach(function(digit) {
+    ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/', '*', '+', '-'].forEach(function(digit) {
       $(document).bind('keyup', digit, function() {
         Calci.handleInput(digit);
       });
+    });
+    $(document).bind('keyup', '.', function() {
+      lastNumber = Calci.getLastNumber();
+      if(lastNumber.indexOf('.') == -1) {
+        if (lastNumber.length == 0) {
+          Calci.handleInput(0);
+        }
+        Calci.handleInput('.');
+      }
     });
     $(document).bind('keyup', 'backspace', function() {
       Calci.handleDelete();
@@ -45,6 +54,16 @@ var Calci = {
   },
   clearResult: function() {
     $('#result').html('');
+  },
+  getLastNumber: function() {
+    str = $('#preview').html();
+    regexp = /[+\-*\/]([0-9.])*$/
+    matches = str.match(regexp);
+    if(matches == null) {
+      return str;
+    } else {
+      return matches[0].slice(1);
+    }
   }
 };
 
