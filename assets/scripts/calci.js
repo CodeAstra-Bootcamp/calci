@@ -19,4 +19,10 @@ $(document).ready(function() {
     $('#preview').html('');
     $('#result').html('');
   });
+
+  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function(digit) {
+    $(document).bind('keyup', digit, function() {
+      $('#preview').html($('#preview').html() + digit);
+    });
+  });
 });
