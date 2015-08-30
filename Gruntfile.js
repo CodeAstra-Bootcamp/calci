@@ -11,6 +11,10 @@ module.exports = function(grunt) {
       css: {
         files: ['assets/stylesheets/src/*.scss'],
         tasks: ['sass', 'cssmin']
+      },
+      js: {
+        files: ['assets/scripts/src/*.coffee'],
+        tasks: ['coffee']
       }
     },
     cssmin: {
@@ -23,11 +27,19 @@ module.exports = function(grunt) {
             ]
         }
       }
+    },
+    coffee: {
+      compile: {
+        files: {
+          'assets/scripts/calci.js': 'assets/scripts/src/calci.coffee'
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.registerTask('default', ['sass', 'cssmin', 'watch']);
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.registerTask('default', ['sass', 'cssmin', 'coffee', 'watch']);
 };

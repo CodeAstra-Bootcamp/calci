@@ -1,111 +1,126 @@
 (function() {
-  var Calci = {
+  var Calci;
+
+  Calci = {
     init: function() {
-      $('#calculator .input').click(function(){
-        if(this.dataset.keyType == "digit") {
-          Calci.handleInput(this.dataset.digit);
-        } else if (this.dataset.keyType == "operator") {
-          Calci.handleOperator(this.dataset.operator);
-        } else if (this.dataset.keyType == "delete") {
-          Calci.handleDelete();
-        } else if (this.dataset.keyType == "equals") {
-          Calci.evaluateResult();
+      var digit, i, j, k, key, len, len1, len2, ref, ref1, ref2, results;
+      $('#calculator .input').click(function() {
+        if (this.dataset.keyType === "digit") {
+          return Calci.handleInput(this.dataset.digit);
+        } else if (this.dataset.keyType === "operator") {
+          return Calci.handleOperator(this.dataset.operator);
+        } else if (this.dataset.keyType === "delete") {
+          return Calci.handleDelete();
+        } else if (this.dataset.keyType === "equals") {
+          return Calci.evaluateResult();
         }
       });
       $('#calculator #delete').dblclick(function() {
         Calci.clearPreview();
-        Calci.clearResult();
+        return Calci.clearResult();
       });
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function(digit) {
+      ref = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+      for (i = 0, len = ref.length; i < len; i++) {
+        digit = ref[i];
         $(document).bind('keyup', digit, function() {
-          Calci.handleInput(digit);
+          return Calci.handleInput(digit);
         });
-      });
-      ['/', '*', '+', '-'].forEach(function(digit) {
+      }
+      ref1 = ['/', '*', '+', '-'];
+      for (j = 0, len1 = ref1.length; j < len1; j++) {
+        digit = ref1[j];
         $(document).bind('keyup', digit, function() {
-          Calci.handleOperator(digit);
+          return Calci.handleOperator(digit);
         });
-      });
+      }
       $(document).bind('keyup', '.', function() {
+        var lastNumber;
         lastNumber = Calci.getLastNumber();
-        if(lastNumber.indexOf('.') == -1) {
-          if (lastNumber.length == 0) {
+        if (lastNumber.indexOf('.') === -1) {
+          if (lastNumber.length === 0) {
             Calci.handleInput(0);
           }
-          Calci.handleInput('.');
+          return Calci.handleInput('.');
         }
       });
       $(document).bind('keyup', 'backspace', function() {
-        Calci.handleDelete();
+        return Calci.handleDelete();
       });
       $(document).bind('keyup', 'shift+=', function() {
-        Calci.handleOperator('+');
+        return Calci.handleOperator('+');
       });
-      ['=', 'return'].forEach(function(key) {
-        $(document).bind('keyup', key, function() {
-          Calci.evaluateResult();
-        });
-      });
+      ref2 = ['=', 'return'];
+      results = [];
+      for (k = 0, len2 = ref2.length; k < len2; k++) {
+        key = ref2[k];
+        results.push($(document).bind('keyup', key, function() {
+          return Calci.evaluateResult();
+        }));
+      }
+      return results;
     },
     handleInput: function(input) {
-      $('#preview').html($('#preview').html() + input);
+      return $('#preview').html($('#preview').html() + input);
     },
     handleOperator: function(operator) {
-      if ($('#preview').html().length == 0) {
-        if (operator == '-') {
-          Calci.handleInput('-');
+      if ($('#preview').html().length === 0) {
+        if (operator === '-') {
+          return Calci.handleInput('-');
         }
       } else {
         if (Calci.checkLastCharIsOperator()) {
           Calci.handleDelete();
         }
-        Calci.handleInput(operator);
+        return Calci.handleInput(operator);
       }
     },
     handleDelete: function() {
       $('#preview').html($('#preview').html().slice(0, -1));
-      if ($('#preview').html().length == 0) {
-        Calci.clearResult();    
+      if ($('#preview').html().length === 0) {
+        return Calci.clearResult();
       }
     },
     evaluateResult: function() {
       if (Calci.checkLastCharIsOperator()) {
         Calci.handleDelete();
       }
-      $('#result').html(eval($('#preview').html()));  
+      return $('#result').html(eval($('#preview').html()));
     },
     clearResult: function() {
-      $('#result').html('');
+      return $('#result').html('');
     },
     clearPreview: function() {
-      $('#preview').html('');
+      return $('#preview').html('');
     },
     getLastNumber: function() {
+      var matches, regexp, str;
       str = $('#preview').html();
-      regexp = /[+\-*\/]([0-9.])*$/
+      regexp = /[+\-*\/]([0-9.])*$/;
       matches = str.match(regexp);
-      if(matches == null) {
+      if (matches === null) {
         return str;
       } else {
         return matches[0].slice(1);
       }
     },
     getLastChar: function() {
+      var str;
       str = $('#preview').html();
-      if (str.length == 0) {
+      if (str.length === 0) {
         return str;
       } else {
         return str[str.length - 1];
       }
     },
     checkLastCharIsOperator: function() {
+      var lastChar;
       lastChar = Calci.getLastChar();
-      return (['+', '-', '*', '/'].indexOf(lastChar) != -1);
+      return ['+', '-', '*', '/'].indexOf(lastChar) !== -1;
     }
   };
 
-
-  $(document).ready(function() {
-    Calci.init();
+  $(function() {
+    return Calci.init();
   });
-})();
+
+}).call(this);
